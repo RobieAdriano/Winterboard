@@ -330,7 +330,7 @@ static NSString *_plist;
 @interface WBSettingsController: PSListController {
 }
 
-- (id) initForContentSize:(CGSize)size;
+- (instancetype)initForContentSize:(CGSize)size;
 - (void) dealloc;
 - (void) suspend;
 - (void) navigationBarButtonClicked:(int)buttonIndex;
@@ -353,7 +353,7 @@ static NSString *_plist;
     UnHideIconViaDisplayId = reinterpret_cast<BOOL (*)(NSString *)>(dlsym(libhide, "UnHideIconViaDisplayId"));
 }
 
-- (id) initForContentSize:(CGSize)size {
+- (instancetype)initForContentSize:(CGSize)size {
     if ((self = [super initForContentSize:size]) != nil) {
         _plist = [[NSString stringWithFormat:@"%@/Library/Preferences/com.saurik.WinterBoard.plist", NSHomeDirectory()] retain];
         _settings = [([NSMutableDictionary dictionaryWithContentsOfFile:_plist] ?: [NSMutableDictionary dictionary]) retain];

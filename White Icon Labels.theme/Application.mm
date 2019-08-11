@@ -41,7 +41,7 @@
 
 #include <objc/objc-runtime.h>
 
-#import <Preferences/PSRootController.h>
+#import <Preferences/SRootController.h>
 #import <Preferences/PSViewController.h>
 #import <Preferfatal error: 'UIKit/UIKit.h' file not foundences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
