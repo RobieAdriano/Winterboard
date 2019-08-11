@@ -36,8 +36,6 @@
 */
 
 #import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#imporUIKitt <UIKit/UIKit.h>
 
 #include <objc/objc-runtime.h>
 
@@ -48,10 +46,6 @@
 
 static NSBundle *wbSettingsBundle;
 static Class $WBSettingsController;
-
-@interface UIApplication (Private)
-- (void) terminateWithSuccess;
-@end
 
 @interface UIDevice (Private)
 - (BOOL) isWildcat;
@@ -121,10 +115,12 @@ static Class $WBSettingsController;
 }
 
 - (id) contentView {
-    if ([[PSRootController class] instancesRespondToSelector:@selector(contentView)]) {
-        return [super contentView];
-    } else {
-        return [super view];
+    if ([PSRootController respondsToSelector:@selector(class)]) {
+        if (![[PSRootController class] instancesRespondToSelector:@selector(contentView)]) {
+            return [super view];
+        } else {
+            return [super contentView];
+        }
     }
 }
 
